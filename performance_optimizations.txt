@@ -2,3 +2,35 @@
 2. Использование кэша второго уровня
 3. Использование памяти
 4. 
+
+ARM architecture
+
+The Cortex-A7 MPCore processor implements the ARMv7-A architecture with the following architecture extensions:
+    Advanced Single Instruction Multiple Data version 2 (SIMDv2) architecture extension for integer and floating-point vector operations.
+    Note
+
+    The Advanced SIMD architecture extension, its associated implementations, and supporting software, are commonly referred to as NEON technology.
+    Vector Floating-Point version 4 (VFPv4) architecture extension for floating-point computation that is fully compliant with the IEEE 754 standard.
+    Security Extensions for implementation of enhanced security.
+    Virtualization Extensions for the development of virtualized systems that enable the switching of guest operating systems.
+    Large Physical Address (LPA) Extension for address translation of up to 40 bit physical addresses.
+    Multiprocessing Extensions for multiprocessing functionality.
+    
+
+Advanced Microcontroller Bus Architectures
+
+The Cortex-A7 MPCore processor ACE and debug interfaces comply with the:
+    AMBA 4 Advanced eXtensible Interface (AXI) protocol. See the AMBA AXI Protocol Specification.
+    AMBA 3 Advanced Peripheral Bus (APB) protocol. See the AMBA APB Protocol Specification.
+    
+
+Interfaces
+
+The Cortex-A7 MPCore processor has the following external interfaces:
+    ACE.
+    APB.
+    ETM.
+    Design For Test (DFT).
+    Memory Built-In Self Test (MBIST) controller.
+    
+L2 data RAM cycle latency 	2 cycles
