@@ -1,0 +1,27 @@
+http://www.heyrick.co.uk/armwiki/Processor_modes
+
+http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0204j/Chdddhea.html
+
+here are seven processor modes:
+Mode 		Bits 	Description 	Family
+User 	usr 	%10000 	Normal program execution, no privileges 	All
+FIQ 	fiq 	%10001 	Fast interrupt handling 	All
+IRQ 	irq 	%10010 	Normal interrupt handling 	All
+Supervisor 	svc 	%10011 	Privileged mode for the operating system 	All
+Abort 	abt 	%10111 	For virtual memory and memory protection 	ARMv3+
+Undefined 	und 	%11011 	Facilitates emulation of co-processors in hardware 	ARMv3+
+System 	sys 	%11111 	Runs programs with some privileges 	ARMv4+
+
+ User mode
+
+This is the mode in which user application tasks should run. It has access to the base register set, and no privileges. 
+
+ SVC mode
+
+This is the privileged mode reserved for the operating system. R13, R14, and CPSR are shadowed.
+
+OS calls (SWI) set the processor to SVC mode, and then the processor jumps to &8 (or &FFFF0008).
+
+After system reset, the ARM begins processing at address &0 (or &FFFF0000 if high vectors configured), 
+with interrupts disabled and in SVC mode. This address is the location of the Reset Vector, 
+which should be a branch to the reset code. 
