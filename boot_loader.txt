@@ -1,0 +1,21 @@
+->Set up system registers  and memory environment
+->Set up MMU
+->Setup stack pointers : initialize stack pointers for all ARM modes
+->Set up bss section : zeroing the ZI data region,  copying initialization values for initialized variables from ROM to RAM
+->Set up hw : CPU clock initialization , external bus interface configuration,low level peripheral initialization etc
+
+--------------------------------------------------------------------------
+
+The processor always boots in the privileged Supervisor mode in the Secure state, with the NS bit set to 0. See Secure Configuration Register. This means that code that does not attempt to use the Security Extensions always runs in the Secure state. If the software uses both Secure and Non-secure states, the less trusted software, such as a complex operating system and application code running under that operating system, executes in Non-secure state, and the most trusted software executes in the Secure state.
+
+The following sequence is expected to be typical use of the Security Extensions:
+
+  * Exit from reset in Secure state.
+  * Configure the security state of memory and peripherals. Some memory and peripherals are accessible only to the software running in Secure state.
+  * Initialize the secure operating system. The required operations depend on the operating system, and include initialization of caches, MMU, exception vectors, and stacks.
+  * Initialize Secure Monitor software to handle exceptions that switch execution between the Secure and Non-secure operating systems.
+  * Optionally lock aspects of the secure state environment against further configuration.
+  * Pass control through the Secure Monitor software to the Non-secure OS with an SMC instruction.
+  * Enable the Non-secure operating system to initialize. The required operations depend on the operating system, and typically include initialization of caches, MMU, exception vectors, and stacks.
+
+The overall security of the software depends on the system design, and on the secure software itself.
